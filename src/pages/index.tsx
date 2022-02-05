@@ -42,8 +42,12 @@ const Home: NextPage = () => {
           justify="space-between"
           flexDirection={{ base: "column", md: "row" }}
         >
-          <VStack >
-            <VStack align="left" lineHeight="8" textAlign={{ base: "center", md: "left"}}>
+          <VStack>
+            <VStack
+              align="left"
+              lineHeight="8"
+              textAlign={{ base: "center", md: "left" }}
+            >
               <Text as="h1">About me</Text>
               <Text as="h3">An introduction about who I am</Text>
             </VStack>
@@ -55,7 +59,7 @@ const Home: NextPage = () => {
 
           <VStack
             align="flex-start"
-            maxWidth={{ base: "300", md: "400s"}}
+            maxWidth={{ base: "300", md: "400s" }}
             mt={{ base: "10", md: "0" }}
           >
             <Text as="p">

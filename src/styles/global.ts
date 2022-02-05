@@ -26,11 +26,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font: 400 16px 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     transition: all .3s;
-    /* background: ${props => props.theme.colors.background}; */
     background: #1f1b2e;
-    /* color: ${props => props.theme.colors.text}; */
     color: #fff;
-    /* overflow-x: hidden; */
   }
 
   img,

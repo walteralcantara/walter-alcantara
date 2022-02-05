@@ -5,13 +5,9 @@ import { PageContainer } from "../components/Layout/components/PageContainer";
 import { PageContent } from "../components/Layout/components/PageContent";
 
 const Contact: NextPage = () => {
-
   return (
     <PageContainer>
-      <SlidePage
-        direction="left"
-        href="/portfolio"
-      >
+      <SlidePage direction="left" href="/portfolio">
         Portfolio
       </SlidePage>
 
@@ -19,10 +15,7 @@ const Contact: NextPage = () => {
         <h1>Contact</h1>
       </PageContent>
 
-      <SlidePage
-        direction="right"
-        href="/"
-      >
+      <SlidePage direction="right" href="/">
         Home
       </SlidePage>
     </PageContainer>

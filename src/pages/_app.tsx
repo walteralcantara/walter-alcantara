@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <AnimatePresence exitBeforeEnter initial={false}>
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
-        
       </NavigationContextProvider>
     </ChakraProvider>
   );

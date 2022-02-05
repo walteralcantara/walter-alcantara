@@ -1,14 +1,30 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
-type NavigationContextData = {};
+type DirectionData = { 
+  direction: "left" | "right" | undefined;
+  eventType?: "slide" | "fade" | undefined;
+}
 
-export const NavigationContext = createContext({} as any);
+type VariantsData = {
+  enter: (props: DirectionData) => any;
+  center: any;
+  exit: (props: DirectionData) => any;
+}
 
-type NavigationContextProviderProps = {};
+type NavigationContextData = {
+  variants: VariantsData;
+  direction: DirectionData;
+  setDirection: any; 
+};
+
+export const NavigationContext = createContext({} as NavigationContextData);
+
+type NavigationContextProviderProps = {
+  children: ReactNode;
+};
 
 const variants = {
-  enter: ({ direction, eventType }: { direction: "right" | "left", eventType: string }) => {
-
+  enter: ({ direction, eventType}: DirectionData) => {
     if (eventType === "slide") {
       return {
         x: direction === "right" ? 1000 : -1000,
@@ -32,8 +48,7 @@ const variants = {
     opacity: 1,
   },
 
-  exit: ({ direction, eventType }: { direction: "right" | "left", eventType: string }) => {
-
+  exit: ({ direction, eventType }: DirectionData) => {
     if (eventType === "slide") {
       return {
         zIndex: 0,
@@ -52,8 +67,8 @@ const variants = {
   },
 };
 
-export const NavigationContextProvider = ({ children }: any) => {
-  const [direction, setDirection] = useState<{ eventType: string | undefined, direction?: string}>({ eventType: undefined });
+export const NavigationContextProvider = ({ children }: NavigationContextProviderProps) => {
+  const [direction, setDirection] = useState({ direction: undefined, eventType: undefined });
 
   return (
     <NavigationContext.Provider

@@ -9,10 +9,7 @@ const Qualifications: NextPage = () => {
 
   return (
     <PageContainer>
-      <SlidePage
-        direction="left"
-        href="/skills"
-      >
+      <SlidePage direction="left" href="/skills">
         Skills
       </SlidePage>
 
@@ -20,10 +17,7 @@ const Qualifications: NextPage = () => {
         <h1>Qualifications</h1>
       </PageContent>
 
-      <SlidePage
-        direction="right"
-        href="/portfolio"
-      >
+      <SlidePage direction="right" href="/portfolio">
         Portfolio
       </SlidePage>
     </PageContainer>
