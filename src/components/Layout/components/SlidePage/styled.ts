@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 type SlidePageContainerProps = {
   readonly direction: "left" | "right";
+  readonly colormode: "dark" | "light";
 }
 
 export const SlidePageContainer = styled(ChakraLink)<SlidePageContainerProps>`
@@ -10,17 +11,14 @@ export const SlidePageContainer = styled(ChakraLink)<SlidePageContainerProps>`
   top: 0;
   height: calc(100vh - 75px);
   width: 145px;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   font-size: 18px;
-  color: #fff;
   font-weight: 800;
-
   padding: 0 1rem;
-
+  background: ${({ colormode }) => colormode === "dark" ? "#1f1b2e" : "#fcfbff"};
+  
   ${({ direction }) => direction === "right" && css`
     right: 0;
     justify-self: flex-end;
@@ -34,14 +32,15 @@ export const SlidePageContainer = styled(ChakraLink)<SlidePageContainerProps>`
       transform: rotate(180deg);
     }
   `}
-
-  @media screen and (max-width: 767px) {
+    
+    @media screen and (max-width: 767px) {
     position: fixed;
     bottom: 0;
     top: unset;
     height: 55px;
     width: 50%;
     font-size: 16px;
+    box-shadow: -1px -7px 16px -4px rgba(0,0,0,0.75);
 
     svg {
       width: 25px;
@@ -54,4 +53,5 @@ export const SlidePageContent = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0rem 1rem;
+  color: inherit;
 `;

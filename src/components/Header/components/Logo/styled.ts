@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const LogoContainer = styled(Flex)`
   align-items: center;
   cursor: pointer;
+  position: relative;
 
   svg path {
     animation: animateLogo 2s ease infinite alternate;
@@ -26,5 +27,33 @@ export const LogoContainer = styled(Flex)`
       stroke-width: 0.5;
       /* fill: #682ae9; */
     }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    text-align: right;
+    right: 0;
+    background: #682ae9;
+    height: .02px;
+    opacity: .5;
+    bottom: 3px;
+    animation: animateLine 2s ease infinite alternate;
+  }
+
+  @keyframes animateLine {
+    0% {
+      width: 0;
+      stroke-dasharray: 1 100;
+      fill: transparent;
+    }
+    25% {
+      width: 1;
+      fill: transparent;
+      stroke-dasharray: 100 0;
+    }
+    60%,
+    100% { width: 0.5; }
   }
 `;

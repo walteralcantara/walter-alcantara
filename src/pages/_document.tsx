@@ -35,7 +35,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          <style>{`#__next { overflow: hidden; }`}</style>
+          <style>{`#__next { overflow-x: hidden; }`}</style>
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />

@@ -4,7 +4,7 @@ import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import * as S from "./styled";
 
 export const ToggleTheme = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
 
   return (
     <S.ToggleThemeContainer>

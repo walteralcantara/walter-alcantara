@@ -6,8 +6,15 @@ const styles = {
     body: {
       bg: mode('#fcfbff', '#1f1b2e')(props),
       color: mode('#1d1d1d', '#fff')(props),
-      overflow: 'hidden'
+      overflowX: 'hidden'
     },
+    h1: {
+      fontSize: 48,
+      fontWeight: 800
+    },
+    h3: {
+      fontSize: 24,
+    }
   })
 }
 
@@ -26,8 +33,8 @@ const components = {
       _hover: {
         textDecoration: 'none'
       }
-    }
-  }
+    },
+  },
 }
 
 const config: ThemeConfig  = {

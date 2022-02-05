@@ -1,4 +1,4 @@
-import { Portal } from "@chakra-ui/react";
+import { Portal, useColorMode } from "@chakra-ui/react";
 import { useBreakpointValue } from "@chakra-ui/react";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -21,6 +21,7 @@ export const SlidePage = ({
   children,
   ...rest
 }: SlidePageProps) => {
+  const { colorMode } = useColorMode();
   const { setDirection } = useNavigationContext();
   const isMobile = useBreakpointValue({ base: true, sm: true, md: false });
 
@@ -29,10 +30,11 @@ export const SlidePage = ({
       <Portal>
         <Link href={href} passHref>
           <S.SlidePageContainer
+            colormode={colorMode}
+            borderTop="1px solid"
             direction={direction}
             onClick={() => setDirection({ direction: direction, eventType: "slide" })}
             {...rest}
-            borderTop="1px solid"
           >
             <S.SlidePageContent>
               <ArrowIcon width={40} />
@@ -47,6 +49,7 @@ export const SlidePage = ({
   return ( // return desktop version
     <Link href={href} passHref>
       <S.SlidePageContainer
+        colormode={colorMode}
         direction={direction}
         onClick={() => setDirection({ direction: direction, eventType: "slide" })}
         {...rest}
