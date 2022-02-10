@@ -1,0 +1,232 @@
+{
+  "techs": [
+    {
+      "id": "html",
+      "img": "/assets/icons/techs/html.png",
+      "name": "HTML",
+      "description": "HyperText Markup Language, is the standard markup language for documents designed to be displayed in a web browser."
+    },
+    {
+      "id": "css",
+      "img": "/assets/icons/techs/css.png",
+      "name": "CSS",
+      "description": "Cascading Style Sheets, is a style sheet language used for describing the presentation of a document written in a markup language such as HTML."
+    },
+    {
+      "id": "javascript",
+      "img": "/assets/icons/techs/javascript.png",
+      "name": "JavaScript",
+      "description": "JavaScript is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS."
+    },
+    {
+      "img": "/assets/icons/techs/git.png",
+      "name": "Git",
+      "description": "Git is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development."
+    },
+    {
+      "img": "/assets/icons/techs/react.png",
+      "name": "ReactJS",
+      "description": "React is a free and open-source front-end JavaScript library for building user interfaces based on UI components. "
+    },
+    {
+      "img": "/assets/icons/techs/redux.png",
+      "name": "Redux",
+      "description": "Redux é uma biblioteca JavaScript de código aberto para gerenciar o estado do aplicativo. É mais comumente usado com a lib React."
+    },
+    {
+      "img": "/assets/icons/techs/typescript.png",
+      "name": "TypeScript",
+      "description": "TypeScript s a strict syntactical superset of JavaScript and adds optional static typing to the language."
+    },
+    {
+      "img": "/assets/icons/techs/styled-components.png",
+      "name": "Styled Components",
+      "description": "Styled Components, is a CSS-in-JS styling framework that uses tagged template literals in JavaScript and the power of CSS."
+    },
+    {
+      "img": "/assets/icons/techs/sass.png",
+      "name": "SASS",
+      "description": "Syntactically Awesome Style Sheets, is a preprocessor scripting language that is interpreted or compiled into CSS."
+    },
+    {
+      "img": "/assets/icons/techs/GSAP.png",
+      "name": "GSAP",
+      "description": "GreenSock Animation Platform, is a animation library JavaScript and animates anything JavaScript can touch."
+    },
+    {
+      "img": "/assets/icons/techs/next-js.png",
+      "name": "Next.js",
+      "description": "Next.js is a framework built on top of Node.js enabling React based web applications functionalities such as SSR and SSG websites."
+    },
+    {
+      "img": "/assets/icons/techs/framer-motion.png",
+      "name": "Framer Motion",
+      "description": "Framer Motion, is a new open source, production-ready motion library for React on the web."
+    },
+    {
+      "img": "/assets/icons/techs/nodejs.png",
+      "name": "Node.js",
+      "description": "Node.js, is a back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser."
+    },
+    {
+      "img": "/assets/icons/techs/expressjs.png",
+      "name": "Express.js",
+      "description": "Express.js, is a back end web application framework for Node.js."
+    },
+    {
+      "img": "/assets/icons/techs/mongodb.png",
+      "name": "MongoDB",
+      "description": "MongoDB, is a database program. Classified as a NoSQL database program."
+    },
+    {
+      "img": "/assets/icons/techs/postgresql.png",
+      "name": "PostgreSQL",
+      "description": "PostgreSQL, is a free and open-source relational database management system emphasizing extensibility and SQL compliance."
+    },
+    {
+      "img": "/assets/icons/techs/firebase.png",
+      "name": "Firebase",
+      "description": "Firebase, is a platform developed by Google for creating mobile and web applications."
+    },
+    {
+      "img": "/assets/icons/techs/graphql.png",
+      "name": "GraphQL",
+      "description": "GraphQL, is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data."
+    },
+    {
+      "img": "/assets/icons/techs/webpack.png",
+      "name": "Webpack",
+      "description": "Webpack, is an open-source JavaScript module bundler."
+    },
+    {
+      "img": "/assets/icons/techs/tailwind.png",
+      "name": "Tailwind",
+      "description": "Tailwind, is a utility-first CSS framework for rapidly building custom user interfaces."
+    },
+    {
+      "img": "/assets/icons/techs/chakraui.png",
+      "name": "ChakraUI",
+      "description": "Chakra, is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications."
+    }
+  ],
+
+  "tools": [
+    {
+      "img": "/assets/icons/tools/adobexd.png",
+      "name": "Adobe XD"
+    },
+    {
+      "img": "/assets/icons/tools/figma.png",
+      "name": "Figma"
+    },
+    {
+      "img": "/assets/icons/tools/photoshop.png",
+      "name": "Photoshop"
+    },
+    {
+      "img": "/assets/icons/tools/linux.png",
+      "name": "Linux"
+    },
+    {
+      "img": "/assets/icons/tools/terminal.png",
+      "name": "Terminal"
+    },
+    {
+      "img": "/assets/icons/tools/npm.png",
+      "name": "NPM"
+    },
+    {
+      "img": "/assets/icons/tools/yarn.png",
+      "name": "Yarn"
+    }
+  ],
+
+  "portfolios": [
+    {
+      "img": "/assets/portfolio/pomoreact.png",
+      "name": "Pomo.react",
+      "description": "Pomo.react, baseado na técnica pomodoro, consiste em ser uma técnica de foco por durante 25 minutos, e 5 minutos de pausa. Construido em react.js.",
+      "link": "https://pomoreact.vercel.app/"
+    },
+    {
+      "img": "/assets/portfolio/wmdb.png",
+      "name": "WMDB",
+      "description": "WMDB, inspirado no TMDB e IMDB, consiste em ser um banco de filmes e séries. Construido em react, next.js, sass e consumo de APIs, ainda em desenvolvimento",
+      "link": "https://wmdb.vercel.app"
+    },
+    {
+      "img": "/assets/portfolio/links.png",
+      "name": "Links",
+      "description": "Links, inspirado na plataforma Linktree, permitindo ao usuário agrupar e divulgar todos os links de suas redes sociais. Construido em react.js, next.js e framer motion.",
+      "link": "https://walteralcantara-links.vercel.app/"
+    },
+    {
+      "img": "/assets/portfolio/healthyfood.png",
+      "name": "Healthy Food",
+      "description": "Healthy Food, é um projeto desenvolvido simulando uma landing page. Construido com react, styled components, next.js e responsivo",
+      "link": "https://healthyfood-walter.vercel.app"
+    },
+    {
+      "img": "/assets/portfolio/corebiz.png",
+      "name": "Corebiz E-commerce",
+      "description": "Corebiz E-commerce, é um teste front-end desenvolvido simulando um e-commerce. Construido com react e styled components",
+      "link": "https://corebiz-walter.vercel.app/"
+    }
+  ],
+
+  "education": [
+    {
+      "institution": "@instituto federal de são paulo",
+      "link": "https://jcr.ifsp.edu.br",
+      "course": "Análise e Desenvolvimento de Sistemas",
+      "time": "fev'2019 - hoje",
+      "direction": "left"
+    }
+  ],
+
+  "work": [
+    {
+      "company": "@enext",
+      "link": "https://enext.com.br",
+      "role": "Estagiário Front-end",
+      "time": "mar'2021 - ago'2021",
+      "direction": "left",
+      "keywords": [
+        "HTML",
+        "PUG",
+        "SASS",
+        "JavaScript",
+        "React",
+        "Redux",
+        "Styled Components",
+        "GIT",
+        "Yarn",
+        "NPM",
+        "API Rest",
+        "VTEX Legacy"
+      ]
+    },
+    {
+      "company": "@corebiz",
+      "link": "https://www.corebiz.ag/pt/",
+      "role": "Desenvolvedor Front-end JR II",
+      "time": "ago'2021 - hoje",
+      "direction": "right",
+      "keywords": [
+        "HTML",
+        "SASS",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "GIT",
+        "Yarn",
+        "NPM",
+        "API Rest",
+        "VTEX Legacy",
+        "VTEX IO",
+        "Styled Components",
+        "Webpack"
+      ]
+    }
+  ]
+}

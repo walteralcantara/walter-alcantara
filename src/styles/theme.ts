@@ -35,6 +35,14 @@ const components = {
       }
     },
   },
+  Button: {
+    variants: {
+      "highlighted": {
+        bg: "#682ae9",
+        color: "#fff",
+      }
+    }
+  }
 }
 
 const config: ThemeConfig  = {
