@@ -176,21 +176,46 @@
 
   "education": [
     {
-      "institution": "@instituto federal de são paulo",
+      "institution": "Federal Institute of São Paulo",
       "link": "https://jcr.ifsp.edu.br",
-      "course": "Análise e Desenvolvimento de Sistemas",
-      "time": "fev'2019 - hoje",
+      "course": "Computer Science",
+      "time": "Feb 2019 - Dec 2022",
       "direction": "left"
     }
   ],
 
-  "work": [
+  "experience": [
     {
-      "company": "@enext",
-      "link": "https://enext.com.br",
-      "role": "Estagiário Front-end",
-      "time": "mar'2021 - ago'2021",
+      "company": "Corebiz",
+      "link": "https://www.corebiz.ag/pt/",
+      "role": "Frontend Engineer",
+      "time": "Aug 2021 - Present",
       "direction": "left",
+      "keywords": [
+        "HTML",
+        "SASS",
+        "Styled Components",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "GraphQL",
+        "REST",
+        "GIT",
+        "GitFlow",
+        "GitHub",
+        "Yarn",
+        "NPM",
+        "VTEX Legacy",
+        "VTEX IO",
+        "Webpack"
+      ]
+    },
+    {
+      "company": "Enext",
+      "link": "https://enext.com.br",
+      "role": "Frontend Developer",
+      "time": "Mar 2021 - Aug 2021",
+      "direction": "right",
       "keywords": [
         "HTML",
         "PUG",
@@ -200,32 +225,14 @@
         "Redux",
         "Styled Components",
         "GIT",
+        "Bitbucket",
         "Yarn",
         "NPM",
-        "API Rest",
+        "Webpack",
+        "Grunt",
+        "Gulp",
+        "API REST",
         "VTEX Legacy"
-      ]
-    },
-    {
-      "company": "@corebiz",
-      "link": "https://www.corebiz.ag/pt/",
-      "role": "Desenvolvedor Front-end JR II",
-      "time": "ago'2021 - hoje",
-      "direction": "right",
-      "keywords": [
-        "HTML",
-        "SASS",
-        "JavaScript",
-        "TypeScript",
-        "React",
-        "GIT",
-        "Yarn",
-        "NPM",
-        "API Rest",
-        "VTEX Legacy",
-        "VTEX IO",
-        "Styled Components",
-        "Webpack"
       ]
     }
   ]
