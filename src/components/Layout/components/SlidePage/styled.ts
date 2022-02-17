@@ -33,7 +33,7 @@ export const SlidePageContainer = styled(ChakraLink)<SlidePageContainerProps>`
     }
   `}
     
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
     position: fixed;
     bottom: 0;
     top: unset;

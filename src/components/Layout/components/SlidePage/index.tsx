@@ -23,7 +23,7 @@ export const SlidePage = ({
 }: SlidePageProps) => {
   const { colorMode } = useColorMode();
   const { setDirection } = useNavigationContext();
-  const isMobile = useBreakpointValue({ base: true, sm: true, md: false });
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   if (isMobile) {
     return (
@@ -31,7 +31,7 @@ export const SlidePage = ({
         <Link href={href} passHref>
           <S.SlidePageContainer
             colormode={colorMode}
-            borderTop="1px solid"
+            // borderTop="1px solid"
             direction={direction}
             onClick={() => setDirection({ direction: direction, eventType: "slide" })}
             {...rest}

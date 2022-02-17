@@ -145,32 +145,23 @@
     {
       "img": "/assets/portfolio/pomoreact.png",
       "name": "Pomo.react",
-      "description": "Pomo.react, baseado na técnica pomodoro, consiste em ser uma técnica de foco por durante 25 minutos, e 5 minutos de pausa. Construido em react.js.",
+      "description": "Pomo.react, based on the Pomodoro technique.",
+      "techs": ["React", "SCSS"],
       "link": "https://pomoreact.vercel.app/"
     },
     {
       "img": "/assets/portfolio/wmdb.png",
       "name": "WMDB",
-      "description": "WMDB, inspirado no TMDB e IMDB, consiste em ser um banco de filmes e séries. Construido em react, next.js, sass e consumo de APIs, ainda em desenvolvimento",
+      "description": "WMDB, is a online database of information related to films and tv series.",
+      "techs": ["React", "Next.js", "SCSS"],
       "link": "https://wmdb.vercel.app"
     },
     {
       "img": "/assets/portfolio/links.png",
       "name": "Links",
-      "description": "Links, inspirado na plataforma Linktree, permitindo ao usuário agrupar e divulgar todos os links de suas redes sociais. Construido em react.js, next.js e framer motion.",
+      "description": "Links, inspired at the Linktree platform.",
+      "techs": ["React", "Next.js", "Framer Motion", "CSS"],
       "link": "https://walteralcantara-links.vercel.app/"
-    },
-    {
-      "img": "/assets/portfolio/healthyfood.png",
-      "name": "Healthy Food",
-      "description": "Healthy Food, é um projeto desenvolvido simulando uma landing page. Construido com react, styled components, next.js e responsivo",
-      "link": "https://healthyfood-walter.vercel.app"
-    },
-    {
-      "img": "/assets/portfolio/corebiz.png",
-      "name": "Corebiz E-commerce",
-      "description": "Corebiz E-commerce, é um teste front-end desenvolvido simulando um e-commerce. Construido com react e styled components",
-      "link": "https://corebiz-walter.vercel.app/"
     }
   ],
 

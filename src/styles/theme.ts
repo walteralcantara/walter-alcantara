@@ -47,7 +47,7 @@ const components = {
       highlighted: {
         bg: "#682ae9",
         color: "#fff",
-      },
+      }
     },
   },
   Tabs: {
