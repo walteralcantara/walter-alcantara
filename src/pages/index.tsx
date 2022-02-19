@@ -1,4 +1,4 @@
-import { Box, Flex, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Link, Text, VStack } from "@chakra-ui/react";
 import type { NextPage } from "next";
 
 import Me1 from "../assets/images/me-1.svg";
@@ -66,7 +66,12 @@ const Home: NextPage = () => {
               Hello, I&apos;m Walter, I&apos;m 24 and I&apos;m a Front-end
               Developer located in Brazil, passionate about web development
             </Text>
-            <Button>Resume</Button>
+            <Link
+              href="https://docs.google.com/document/d/12X6yrg2Wa338Sj8pbruF9JZQkskyemEuxXt5dAp7q6U/edit?usp=sharing"
+              target="_blank"
+            >
+              <Button>Resume</Button>
+            </Link>
           </VStack>
         </Flex>
       </PageContent>
