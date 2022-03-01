@@ -1,7 +1,5 @@
 import { Box, Flex, Link, Text, VStack } from "@chakra-ui/react";
-
-import Me1 from "assets/images/me-1.svg";
-import Me2 from "assets/images/me-2.svg";
+import Image from "next/image";
 
 import { SlidePage } from "components/Layout/components/SlidePage";
 import { PageContainer } from "components/Layout/components/PageContainer";
@@ -30,7 +28,12 @@ const Home = () => {
           </VStack>
 
           <Box w={[300, 400, 500]} h="auto" pos="relative">
-            <Me1 />
+            <Image
+              src="/assets/img/me-1.png"
+              alt="In this picture, it's me using a Hawaiian shirt, and the sand, ocean, and skies in the background demonstrate that I am on the beach."
+              width={500}
+              height={500}
+            />
             <ScrollDown />
           </Box>
         </Flex>
@@ -52,7 +55,12 @@ const Home = () => {
             </VStack>
 
             <Box w={[300, 400, 500]} h="auto">
-              <Me2 />
+              <Image
+                src="/assets/img/me-2.png"
+                alt="In this picture, it's me using a suit on my wedding, and some trees in the background."
+                width={500}
+                height={500}
+              />
             </Box>
           </VStack>
 

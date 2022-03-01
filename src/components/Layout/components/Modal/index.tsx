@@ -1,5 +1,4 @@
 import {
-  Portal,
   Modal as ChakraModal,
   ModalContent,
   ModalOverlay,
@@ -7,9 +6,7 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalFooter,
-  Button,
   Text,
-  Flex,
   Box,
 } from "@chakra-ui/react";
 import Image from "next/image";

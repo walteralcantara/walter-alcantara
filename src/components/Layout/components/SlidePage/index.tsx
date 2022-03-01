@@ -31,7 +31,6 @@ export const SlidePage = ({
         <Link href={href} passHref>
           <S.SlidePageContainer
             colormode={colorMode}
-            // borderTop="1px solid"
             direction={direction}
             onClick={() => setDirection({ direction: direction, eventType: "slide" })}
             {...rest}

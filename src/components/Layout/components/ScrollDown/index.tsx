@@ -2,7 +2,7 @@ import * as S from "./styled";
 
 import { Text } from "@chakra-ui/react";
 
-import ScrollDownIcon from "../../../../assets/icons/scroll-down-icon.svg";
+import ScrollDownIcon from "assets/icons/scroll-down-icon.svg";
 
 export const ScrollDown = () => {
   return (
