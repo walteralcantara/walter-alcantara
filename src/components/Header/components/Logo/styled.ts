@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const LogoContainer = styled(Flex)`
   align-items: center;
@@ -36,7 +36,7 @@ export const LogoContainer = styled(Flex)`
     text-align: right;
     right: 0;
     background: #682ae9;
-    height: .02px;
+    height: .02rem;
     opacity: .5;
     bottom: 3px;
     animation: animateLine 2s ease infinite alternate;

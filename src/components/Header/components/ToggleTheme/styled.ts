@@ -1,7 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
-export const ToggleThemeContainer = styled(Box)`
 
-`;
+export const ToggleThemeContainer = styled(Box)``;

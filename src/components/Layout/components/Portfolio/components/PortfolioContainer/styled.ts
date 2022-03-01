@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const PortfolioContainer = styled(Flex)`
   max-width: 100%;

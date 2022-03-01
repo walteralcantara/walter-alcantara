@@ -1,5 +1,4 @@
-// import { Link as ChakraLink, Button } from '@chakra-ui/react';
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 
 type StyledLinkProps = {
   readonly isHighlighted: boolean;

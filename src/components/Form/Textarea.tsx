@@ -1,4 +1,5 @@
-import { forwardRef, ForwardRefRenderFunction, ReactNode } from "react";
+import { forwardRef, ForwardRefRenderFunction } from "react";
+import { FieldError } from "react-hook-form";
 import {
   TextareaProps as ChakraTextareaProps,
   FormErrorMessage,
@@ -6,12 +7,11 @@ import {
   Textarea,
   FormLabel,
 } from "@chakra-ui/react";
-import { FieldError } from "react-hook-form";
 
-interface TextareaCloseBaseProps extends ChakraTextareaProps {
+type TextareaCloseBaseProps = {
   label?: string;
   error?: FieldError;
-}
+} & ChakraTextareaProps;
 
 const TextareaBase: ForwardRefRenderFunction<
   HTMLTextAreaElement,
@@ -28,4 +28,3 @@ const TextareaBase: ForwardRefRenderFunction<
 
 const TextareaCloseBase = forwardRef(TextareaBase);
 export default TextareaCloseBase;
-

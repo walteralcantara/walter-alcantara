@@ -1,5 +1,7 @@
 import { Link as ChakraLink } from '@chakra-ui/react';
-import styled, { css } from 'styled-components';
+
+import styled from '@emotion/styled';
+import { css } from "@emotion/react";
 
 type SlidePageContainerProps = {
   readonly direction: "left" | "right";

@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import styled, { css } from "styled-components";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 type ColorModeProps = {
   readonly colormode: string;
