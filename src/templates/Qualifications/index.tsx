@@ -19,7 +19,7 @@ import { PageContent } from "components/Layout/components/PageContent";
 import { SlidePage } from "components/Layout/components/SlidePage";
 import { Timeline } from "components/Layout/components/Timeline";
 
-import { education, experience } from "services/fakeApi.json";
+import api from "services/api.json";
 
 const Qualifications = () => {
   return (
@@ -45,7 +45,7 @@ const Qualifications = () => {
 
           <TabPanels>
             <TabPanel>
-              {education.map(
+              {api.education.map(
                 ({ institution, link, course, time, direction }) => (
                   <Timeline key={institution} direction={direction}>
                     <Link href={link} target="_blank" d="flex">
@@ -63,7 +63,7 @@ const Qualifications = () => {
             </TabPanel>
 
             <TabPanel>
-              {experience.map(
+              {api.experience.map(
                 ({ company, link, role, time, keywords, direction }) => (
                   <Timeline key={company} direction={direction}>
                     <Link href={link} target="_blank" d="flex">

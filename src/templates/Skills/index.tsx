@@ -5,7 +5,7 @@ import { PageContainer } from "components/Layout/components/PageContainer";
 import { PageContent } from "components/Layout/components/PageContent";
 import { Modal } from "components/Layout/components/Modal";
 
-import fakeApi from "services/fakeApi.json";
+import api from "services/api.json";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -43,7 +43,7 @@ const Skills = () => {
               gap="2"
               justifyContent={{ base: "flex-start", md: "unset" }}
             >
-              {fakeApi.techs.map((tech) => (
+              {api.techs.map((tech) => (
                 <Button
                   key={tech.name}
                   cursor="pointer"
@@ -70,7 +70,7 @@ const Skills = () => {
               gap="2"
               justifyContent={{ base: "flex-start", md: "unset" }}
             >
-              {fakeApi.tools.map((tool) => (
+              {api.tools.map((tool) => (
                 <Button
                   key={tool.name}
                   cursor="pointer"
