@@ -6,6 +6,7 @@ import { PageContainer } from "components/Layout/components/PageContainer";
 import { PageContent } from "components/Layout/components/PageContent";
 import { Button } from "components/Layout/components/Button";
 import { ScrollDown } from "components/Layout/components/ScrollDown";
+import { Heading } from "components/Layout/components/Heading";
 
 const Home = () => {
   return (
@@ -19,12 +20,13 @@ const Home = () => {
           align="center"
           justify="space-between"
           flexDirection={{ base: "column-reverse", md: "row" }}
+          mb="60"
         >
           <VStack align="left" lineHeight="40px" mt={{ base: "10", sm: "0" }}>
             <Text as="h1">Hi,</Text>
             <Text as="h1">I&apos;m Walter</Text>
 
-            <Text as="h3">A Front-end Developer.</Text>
+            <Text as="h3">A Frontend Engineer.</Text>
           </VStack>
 
           <Box w={[300, 400, 500]} h="auto" pos="relative">
@@ -38,22 +40,18 @@ const Home = () => {
           </Box>
         </Flex>
 
+        <Heading
+          title="About me."
+          subtitle="An introduction about who I am."  
+        />
+        
         <Flex
-          mt="60"
           align="center"
           justify="space-between"
           flexDirection={{ base: "column", md: "row" }}
         >
+          
           <VStack>
-            <VStack
-              align="left"
-              lineHeight="8"
-              textAlign={{ base: "center", md: "left" }}
-            >
-              <Text as="h1">About me</Text>
-              <Text as="h3">An introduction about who I am</Text>
-            </VStack>
-
             <Box w={[300, 400, 500]} h="auto">
               <Image
                 src="/assets/img/me-2.png"
@@ -66,12 +64,21 @@ const Home = () => {
 
           <VStack
             align="flex-start"
-            maxWidth={{ base: "300", md: "400s" }}
+            maxWidth="400"
             mt={{ base: "10", md: "0" }}
           >
-            <Text as="p">
-              Hello, I&apos;m Walter, I&apos;m 24 and I&apos;m a Front-end
-              Developer located in Brazil, passionate about web development
+            <Text>
+              Hello, I&apos;m Walter, I&apos;m 24, and I&apos;m a Frontend
+              Engineer located in Brazil, passionate about web development.
+            </Text>
+            <Text py={2}>
+              For the last 2 years, I have been developing software. And I can
+              say that I have never been so proud and happy with what I do.
+            </Text>
+            <Text>
+              I always have been passionate about technology since I was a kid,
+              always motivated, looking for new challenges, and ready for
+              whatever it comes.
             </Text>
             <Link
               href="https://docs.google.com/document/d/12X6yrg2Wa338Sj8pbruF9JZQkskyemEuxXt5dAp7q6U/edit?usp=sharing"

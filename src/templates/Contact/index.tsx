@@ -12,7 +12,6 @@ import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import emailjs from "@emailjs/browser";
 
 import { BsLinkedin } from "react-icons/bs";
@@ -21,6 +20,7 @@ import { FaGithubSquare } from "react-icons/fa";
 import { SlidePage } from "components/Layout/components/SlidePage";
 import { PageContainer } from "components/Layout/components/PageContainer";
 import { PageContent } from "components/Layout/components/PageContent";
+import { Heading } from "components/Layout/components/Heading";
 
 import InputCloseBase from "components/Form/Input";
 import TextareaCloseBase from "components/Form/Textarea";
@@ -49,7 +49,7 @@ const Contact = () => {
     resolver: yupResolver(contactFormSchema),
   });
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = () => {
     emailjs
       .sendForm(
         "service_5loz08t",
@@ -82,9 +82,10 @@ const Contact = () => {
       </SlidePage>
 
       <PageContent>
-        <Text as="h1" mb="8">
-          Contact
-        </Text>
+        <Heading
+          title="Contact"
+          subtitle="You can reach me through the following links or you could send me a message."
+        />
 
         <Flex
           justify="space-between"

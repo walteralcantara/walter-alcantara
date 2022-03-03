@@ -9,8 +9,8 @@ import {
   Tabs,
   Text,
 } from "@chakra-ui/react";
-
 import { ExternalLinkIcon, CalendarIcon } from "@chakra-ui/icons";
+
 import EducationIcon from "assets/icons/education-icon.svg";
 import JobIcon from "assets/icons/job-icon.svg";
 
@@ -18,6 +18,7 @@ import { PageContainer } from "components/Layout/components/PageContainer";
 import { PageContent } from "components/Layout/components/PageContent";
 import { SlidePage } from "components/Layout/components/SlidePage";
 import { Timeline } from "components/Layout/components/Timeline";
+import { Heading } from "components/Layout/components/Heading";
 
 import api from "services/api.json";
 
@@ -29,7 +30,12 @@ const Qualifications = () => {
       </SlidePage>
 
       <PageContent>
-        <Tabs variant="soft-rounded" mt="20">
+        <Heading 
+          title="Qualifications"
+          subtitle="My journey until here."
+        />
+
+        <Tabs variant="soft-rounded">
           <Flex justify="center">
             <TabList gap={{ base: "2", sm: "10" }}>
               <Tab>
