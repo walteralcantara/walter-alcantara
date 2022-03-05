@@ -11,8 +11,8 @@ import { Heading } from "components/Layout/components/Heading";
 const Home = () => {
   return (
     <PageContainer>
-      <SlidePage direction="left" href="/contact">
-        Contact
+      <SlidePage direction="left" href="/blog">
+        Blog
       </SlidePage>
 
       <PageContent>
@@ -40,17 +40,13 @@ const Home = () => {
           </Box>
         </Flex>
 
-        <Heading
-          title="About me."
-          subtitle="An introduction about who I am."  
-        />
-        
+        <Heading title="About me." subtitle="An introduction about who I am." />
+
         <Flex
           align="center"
           justify="space-between"
           flexDirection={{ base: "column", md: "row" }}
         >
-          
           <VStack>
             <Box w={[300, 400, 500]} h="auto">
               <Image

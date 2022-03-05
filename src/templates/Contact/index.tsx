@@ -159,8 +159,8 @@ const Contact = () => {
         </Flex>
       </PageContent>
 
-      <SlidePage direction="right" href="/">
-        Home
+      <SlidePage direction="right" href="/blog">
+        Blog
       </SlidePage>
     </PageContainer>
   );

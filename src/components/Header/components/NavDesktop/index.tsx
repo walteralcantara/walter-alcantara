@@ -9,6 +9,7 @@ export const NavDesktop = () => {
       <Link href="/qualifications">Qualifications</Link>
       <Link href="/portfolio">Portfolio</Link>
       <Link href="/contact">Contact</Link>
+      <Link href="/blog">Blog</Link>
     </Box>
   );
 };

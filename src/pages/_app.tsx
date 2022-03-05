@@ -10,6 +10,9 @@ import theme from "styles/theme";
 import Header from "components/Header";
 import { Head } from "components/Head";
 
+import { ApolloProvider } from "@apollo/client";
+import apolloClient from "lib/apollo";
+
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
@@ -17,8 +20,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
       <NavigationContextProvider>
         <Header />
+
         <AnimatePresence exitBeforeEnter initial={false}>
-          <Component {...pageProps} key={router.route} />
+          <ApolloProvider client={apolloClient}>
+            <Component {...pageProps} key={router.route} />
+          </ApolloProvider>
         </AnimatePresence>
       </NavigationContextProvider>
     </ChakraProvider>
