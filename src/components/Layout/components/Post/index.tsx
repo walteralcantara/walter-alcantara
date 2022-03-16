@@ -39,9 +39,9 @@ export const Post = ({
           <S.Excerpt>{excerpt}</S.Excerpt>
 
           <S.AuthorContainer>
-            <Avatar name={author.name} src={author.picture.url} />
+            <Avatar name={author?.name} src={author?.picture.url} />
             <S.AuthorInfo>
-              <Text as="strong">{author.name}</Text>
+              <Text as="strong">{author?.name}</Text>
               <Text>{createdAt}</Text>
             </S.AuthorInfo>
           </S.AuthorContainer>

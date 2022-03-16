@@ -49,4 +49,22 @@ export const Content = styled(Box)`
   p {
     margin: inherit;
   }
+
+  img {
+    margin: 2rem auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  pre {
+    background: #090e24;
+    padding: 1rem;
+
+    code {
+      color: #fff;
+    }
+  }
 `;
