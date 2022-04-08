@@ -94,6 +94,11 @@
       "description": "GraphQL, is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data."
     },
     {
+      "img": "/assets/icons/techs/apollo.png",
+      "name": "Apollo",
+      "description": "Apollo Client, is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL."
+    },
+    {
       "img": "/assets/icons/techs/webpack.png",
       "name": "Webpack",
       "description": "Webpack, is an open-source JavaScript module bundler."
@@ -107,6 +112,26 @@
       "img": "/assets/icons/techs/chakraui.png",
       "name": "ChakraUI",
       "description": "Chakra, is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications."
+    },
+    {
+      "img": "/assets/icons/techs/cypress.png",
+      "name": "Cypress",
+      "description": "Cypress, is an end-to-end testing framework for web test automation. "
+    },
+    {
+      "img": "/assets/icons/techs/jest.png",
+      "name": "Jest",
+      "description": "Jest, is a JavaScript testing framework designed to ensure correctness of any JavaScript codebase."
+    },
+    {
+      "img": "/assets/icons/techs/react-testing-library.png",
+      "name": "React Testing Library",
+      "description": "RTL, is a testing utility tool that's built to test the actual DOM tree rendered by React on the browser. The goal of the library is to help you write tests that resemble how a user would use your application. "
+    },
+    {
+      "img": "/assets/icons/techs/storybook.png",
+      "name": "Storybook",
+      "description": "Storybook, is an open source tool for building UI components and pages in isolation. It streamlines UI development, testing, and documentation."
     }
   ],
 
