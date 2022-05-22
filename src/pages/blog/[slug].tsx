@@ -1,6 +1,7 @@
-import { gql } from "@apollo/client";
 import apolloClient from "lib/apollo";
 import { GetStaticPaths, GetStaticProps } from "next";
+
+import { QUERY_POST_BY_SLUG } from "graphql/queries/posts";
 
 import BlogPost, { BlogPostTemplateProps } from "templates/Blog/post";
 
@@ -21,28 +22,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const {
     data: { post },
   } = await apolloClient.query({
-    query: gql`
-      query Post($slug: String!) {
-        post(where: { slug: $slug }) {
-          title
-          excerpt
-          createdAt
-          coverImage {
-            url
-          }
-          author {
-            picture {
-              url
-            }
-            name
-            title
-          }
-          content {
-            html
-          }
-        }
-      }
-    `,
+    query: QUERY_POST_BY_SLUG,
     variables: { slug },
   });
 
@@ -59,6 +39,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       ...postFormat,
     },
-    revalidate: 60 * 60 * 6 // 6 hours
+    revalidate: 60 * 10, // 10 minutes
   };
 };

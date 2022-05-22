@@ -1,6 +1,7 @@
-import { gql } from "@apollo/client";
 import apolloClient from "lib/apollo";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
+
+import { QUERY_POSTS } from "graphql/queries/posts";
 
 import Blog, { BlogTemplateProps } from "templates/Blog";
 
@@ -10,30 +11,11 @@ export default function BlogPage(props: BlogPageProps) {
   return <Blog {...props} />;
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const {
     data: { posts },
   } = await apolloClient.query({
-    query: gql`
-      query {
-        posts(orderBy: publishedAt_DESC) {
-          title
-          excerpt
-          createdAt
-          slug
-          coverImage {
-            url
-          }
-          author {
-            picture {
-              url
-            }
-            name
-            title
-          }
-        }
-      }
-    `,
+    query: QUERY_POSTS,
   });
 
   const formatPosts = posts.map((post: any) => {
@@ -51,6 +33,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       posts: [...formatPosts],
     },
-    revalidate: 60 * 60 // 1 hour
   };
 };
