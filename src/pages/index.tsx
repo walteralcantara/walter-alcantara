@@ -1,9 +1,26 @@
-import type { NextPage } from "next";
+import apolloClient from "lib/apollo";
+import { QUERY_AUTHOR } from "graphql/queries/author";
 
-import Home from "templates/Home"
+import type { GetServerSideProps, NextPage } from "next";
 
-const Index: NextPage = () => {
-  return <Home />
+import Home, { HomeTemplateProps } from "templates/Home";
+
+const Index: NextPage<HomeTemplateProps> = (props) => {
+  return <Home {...props} />;
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const {
+    data: { author },
+  } = await apolloClient.query<HomeTemplateProps>({
+    query: QUERY_AUTHOR,
+  });
+
+  return {
+    props: {
+      author,
+    },
+  };
 };
 
 export default Index;

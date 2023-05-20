@@ -1,9 +1,30 @@
-import type { NextPage } from "next";
+import { QUERY_SKILLS } from "graphql/queries/technology";
+import apolloClient from "lib/apollo";
+import type { GetServerSideProps, NextPage } from "next";
 
-import Skills from "templates/Skills";
+import Skills, { SkillTemplateProps } from "templates/Skills";
+import { Technology } from "types";
 
-const SkillsPage: NextPage = () => {
-  return <Skills />
+const SkillsPage: NextPage<SkillTemplateProps> = (props) => {
+  return <Skills {...props} />;
 };
 
-export default SkillsPage
+export const getServerSideProps: GetServerSideProps = async () => {
+  const {
+    data: { technologies: skills },
+  } = await apolloClient.query<{ technologies: Technology[] }>({
+    query: QUERY_SKILLS,
+  });
+
+  const technologies = skills.filter((s) => s.type === "tech");
+  const tools = skills.filter((s) => s.type === "tool");
+
+  return {
+    props: {
+      technologies,
+      tools,
+    },
+  };
+};
+
+export default SkillsPage;

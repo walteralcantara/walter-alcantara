@@ -11,8 +11,11 @@ export const QUERY_POSTS = gql`
         url
       }
       author {
-        picture {
-          url
+        pictures {
+          alternative
+          image {
+            url
+          }
         }
         name
         title
@@ -31,11 +34,14 @@ export const QUERY_POST_BY_SLUG = gql`
         url
       }
       author {
-        picture {
-          url
-        }
         name
         title
+        pictures {
+          alternative
+          image {
+            url
+          }
+        }
       }
       content {
         html

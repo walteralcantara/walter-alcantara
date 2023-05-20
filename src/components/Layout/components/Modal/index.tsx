@@ -7,32 +7,40 @@ import {
   ModalCloseButton,
   ModalFooter,
   Text,
-  Box,
+  Button,
 } from "@chakra-ui/react";
-import Image from "next/image";
+import { ReactNode } from "react";
 
-export const Modal = ({ modalState }: any) => {
-  const { isModalOpen, setModalOpen, modalProps } = modalState;
-  const { img, name, description } = modalProps;
+type ModalProps = {
+  title?: string;
+  onCloseLabel?: string;
+  children: ReactNode;
+  isModalVisible: boolean;
+  onClose: () => void;
+};
 
+export const Modal = ({
+  title = "",
+  onCloseLabel = "Ok",
+  isModalVisible,
+  children,
+  onClose,
+}: ModalProps) => {
   return (
-    <ChakraModal isOpen={isModalOpen} onClose={setModalOpen}>
+    <ChakraModal isOpen={isModalVisible} onClose={onClose} isCentered>
       <ModalOverlay />
+
       <ModalContent>
-        <ModalHeader d="flex" alignItems="center">
-          <Image src={img} alt={name} width={50} height={50} />
-          <Text ml="4">{name}</Text>
+        <ModalHeader>
+          <Text as="h3">{title}</Text>
+          <ModalCloseButton />
         </ModalHeader>
 
-        <ModalCloseButton />
-        
-        <ModalBody>
-          <Box  gridTemplateColumns="50px 4fr" alignItems="center">
-            <Text ml="2">{description}</Text>
-          </Box>
-        </ModalBody>
+        <ModalBody>{children}</ModalBody>
 
-        <ModalFooter />
+        <ModalFooter>
+          <Button onClick={onClose}>{onCloseLabel}</Button>
+        </ModalFooter>
       </ModalContent>
     </ChakraModal>
   );

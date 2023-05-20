@@ -20,9 +20,17 @@ import { SlidePage } from "components/Layout/components/SlidePage";
 import { Timeline } from "components/Layout/components/Timeline";
 import { Heading } from "components/Layout/components/Heading";
 
-import api from "services/api.json";
+import { Qualification } from "types";
 
-const Qualifications = () => {
+export type QualificationsTemplateProps = {
+  experience: Qualification[];
+  education: Qualification[];
+};
+
+const Qualifications = ({
+  education,
+  experience,
+}: QualificationsTemplateProps) => {
   return (
     <PageContainer>
       <SlidePage direction="left" href="/skills">
@@ -30,10 +38,7 @@ const Qualifications = () => {
       </SlidePage>
 
       <PageContent>
-        <Heading 
-          title="Qualifications"
-          subtitle="My journey until here."
-        />
+        <Heading title="Qualifications" subtitle="My journey until here." />
 
         <Tabs variant="soft-rounded">
           <Flex justify="center">
@@ -51,44 +56,40 @@ const Qualifications = () => {
 
           <TabPanels>
             <TabPanel>
-              {api.education.map(
-                ({ institution, link, course, time, direction }) => (
-                  <Timeline key={institution} direction={direction}>
-                    <Link href={link} target="_blank" d="flex">
-                      <Text as="h6">{institution}</Text>
-                      <ExternalLinkIcon ml="2" />
-                    </Link>
-                    <Text mb="2">{course}</Text>
-                    <Text as="span">
-                      <CalendarIcon mr="2" />
-                      {time}
-                    </Text>
-                  </Timeline>
-                )
-              )}
+              {education.map((edu) => (
+                <Timeline key={edu.id} direction={edu.direction}>
+                  <Link href={edu.link} target="_blank" d="flex">
+                    <Text as="h6">{edu.title}</Text>
+                    <ExternalLinkIcon ml="2" />
+                  </Link>
+                  <Text mb="2">{edu.subtitle}</Text>
+                  <Text as="span">
+                    <CalendarIcon mr="2" />
+                    {edu.startdate} - {edu.enddate}
+                  </Text>
+                </Timeline>
+              ))}
             </TabPanel>
 
             <TabPanel>
-              {api.experience.map(
-                ({ company, link, role, time, keywords, direction }) => (
-                  <Timeline key={company} direction={direction}>
-                    <Link href={link} target="_blank" d="flex">
-                      <Text as="h6">{company}</Text>
-                      <ExternalLinkIcon ml="2" />
-                    </Link>
-                    <Text mb="2">{role}</Text>
-                    <Text as="span">
-                      <CalendarIcon mr="2" />
-                      {time}
-                    </Text>
-                    <Flex flexWrap="wrap" gap="1" mt="2">
-                      {keywords.map((kw) => (
-                        <Badge key={kw}>{kw}</Badge>
-                      ))}
-                    </Flex>
-                  </Timeline>
-                )
-              )}
+              {experience.map((exp) => (
+                <Timeline key={exp.id} direction={exp.direction}>
+                  <Link href={exp.link} target="_blank" d="flex">
+                    <Text as="h6">{exp.title}</Text>
+                    <ExternalLinkIcon ml="2" />
+                  </Link>
+                  <Text mb="2">{exp.subtitle}</Text>
+                  <Text as="span">
+                    <CalendarIcon mr="2" />
+                    {exp.startdate} - {exp.enddate}
+                  </Text>
+                  <Flex flexWrap="wrap" gap="1" mt="2">
+                    {exp.technologies.map((t) => (
+                      <Badge key={t.id}>{t.title}</Badge>
+                    ))}
+                  </Flex>
+                </Timeline>
+              ))}
             </TabPanel>
           </TabPanels>
         </Tabs>

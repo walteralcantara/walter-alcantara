@@ -1,33 +1,20 @@
 import { Avatar, Text, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
 
+import { Post } from "types";
+
 import * as S from "./styled";
 
-export type PostProps = {
-  title: string;
-  excerpt: string;
-  slug: string;
-  coverImage: {
-    url: string;
-  };
-  author: {
-    picture: {
-      url: string;
-    };
-    name: string;
-    title: string;
-  };
-  createdAt: string;
-};
+export type PostProps = Post;
 
-export const Post = ({
+export const PostPage = ({
   title,
   excerpt,
   slug,
   coverImage,
   author,
   createdAt,
-}: PostProps) => {
+}: Post) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -39,7 +26,7 @@ export const Post = ({
           <S.Excerpt>{excerpt}</S.Excerpt>
 
           <S.AuthorContainer>
-            <Avatar name={author?.name} src={author?.picture.url} />
+            <Avatar name={author?.name} src={author?.pictures[0].image.url} />
             <S.AuthorInfo>
               <Text as="strong">{author?.name}</Text>
               <Text>{createdAt}</Text>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import { Button, Flex, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
 
 import { SlidePage } from "components/Layout/components/SlidePage";
 import { PageContainer } from "components/Layout/components/PageContainer";
@@ -8,16 +8,26 @@ import { PageContent } from "components/Layout/components/PageContent";
 import { Modal } from "components/Layout/components/Modal";
 import { Heading } from "components/Layout/components/Heading";
 
-import api from "services/api.json";
+import { Technology } from "types";
 
-const Skills = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [modalProps, setModalProps] = useState({});
+export type SkillTemplateProps = {
+  technologies: Technology[];
+  tools: Technology[];
+};
 
-  const openModal = (skill: any) => {
-    setModalOpen(true);
-    setModalProps(skill);
-  };
+const Skills = ({ technologies, tools }: SkillTemplateProps) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [skill, setSkill] = useState<Technology | null>();
+
+  function handleOpenSkill(skill: Technology) {
+    setIsModalVisible(true);
+    setSkill(skill);
+  }
+
+  function handleCloseModal() {
+    setIsModalVisible(false);
+    setSkill(null);
+  }
 
   return (
     <PageContainer>
@@ -32,10 +42,7 @@ const Skills = () => {
           during development."
         />
 
-        <Flex
-          justify="space-between"
-          flexDir={{ base: "column", md: "row" }}
-        >
+        <Flex justify="space-between" flexDir={{ base: "column", md: "row" }}>
           <VStack align="flex-start">
             <Text as="h3">Technologies</Text>
             <Flex
@@ -44,19 +51,19 @@ const Skills = () => {
               maxWidth={{ base: "unset", md: "400" }}
               justifyContent={{ base: "flex-start", md: "unset" }}
             >
-              {api.techs.map((tech) => (
+              {technologies.map(({ picture, ...tech }) => (
                 <Button
-                  key={tech.name}
+                  key={tech.title}
                   cursor="pointer"
                   w="80px"
                   h="80px"
-                  onClick={() => openModal(tech)}
+                  onClick={() => handleOpenSkill({ picture, ...tech })}
                 >
                   <Image
                     width={50}
                     height={50}
-                    src={tech.img}
-                    alt={tech.name}
+                    src={picture.image.url}
+                    alt={picture.alternative}
                   />
                 </Button>
               ))}
@@ -71,19 +78,19 @@ const Skills = () => {
               maxWidth={{ base: "unset", md: "400" }}
               justifyContent={{ base: "flex-start", md: "unset" }}
             >
-              {api.tools.map((tool) => (
+              {tools.map(({ picture, ...tool }) => (
                 <Button
-                  key={tool.name}
+                  key={tool.title}
                   cursor="pointer"
                   w="80px"
                   h="80px"
-                  onClick={() => openModal(tool)}
+                  onClick={() => handleOpenSkill({ picture, ...tool })}
                 >
                   <Image
                     width={50}
                     height={50}
-                    src={tool.img}
-                    alt={tool.name}
+                    src={picture.image.url}
+                    alt={picture.alternative}
                   />
                 </Button>
               ))}
@@ -92,8 +99,25 @@ const Skills = () => {
         </Flex>
 
         <Modal
-          modalState={{ isModalOpen, setModalOpen, modalProps }}
-        />
+          title={skill?.title}
+          onCloseLabel="Close"
+          isModalVisible={isModalVisible}
+          onClose={handleCloseModal}
+        >
+          <Flex alignItems="center" gap={4}>
+            <Box style={{ minWidth: 50 }}>
+              {skill?.picture.image.url && (
+                <Image
+                  src={skill?.picture.image.url}
+                  alt={skill?.picture.alternative}
+                  width={50}
+                  height={50}
+                />
+              )}
+            </Box>
+            <Text ml="2">{skill?.description}</Text>
+          </Flex>
+        </Modal>
       </PageContent>
 
       <SlidePage direction="right" href="/qualifications">

@@ -7,21 +7,20 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon, TriangleUpIcon } from "@chakra-ui/icons";
-import * as S from "./styled";
 import { useState } from "react";
 
-type PortfolioItemProps = {
-  project: {
-    img: string;
-    name: string;
-    description: string;
-    link: string;
-    techs: string[];
-  };
-};
+import { Portfolio } from "types";
+
+import * as S from "./styled";
+
+type PortfolioItemProps = Portfolio;
 
 export const PortfolioItem = ({
-  project: { img, name, description, link, techs },
+  name,
+  description,
+  image,
+  link,
+  technologies,
 }: PortfolioItemProps) => {
   const [active, setActive] = useState(false);
 
@@ -31,7 +30,7 @@ export const PortfolioItem = ({
 
   return (
     <S.PortfolioItem colormode={colorMode}>
-      <S.Image src={img} width="inherit" height="inherit" />
+      <S.Image src={image.url} width="inherit" height="inherit" />
 
       <S.PortfolioItemInfo active={active ? "active" : ""}>
         <S.PortfolioHeader colormode={colorMode}>
@@ -45,9 +44,9 @@ export const PortfolioItem = ({
         <S.PortfolioContent colormode={colorMode}>
           <Text mb="2">{description}</Text>
 
-          {techs.map((tech) => (
-            <Badge key={tech} mr="2">
-              {tech}
+          {technologies.map((tech) => (
+            <Badge key={tech.id} mr="2">
+              {tech.title}
             </Badge>
           ))}
 
