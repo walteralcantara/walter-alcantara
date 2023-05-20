@@ -1,6 +1,6 @@
 import { QUERY_SKILLS } from "graphql/queries/technology";
 import apolloClient from "lib/apollo";
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import Skills, { SkillTemplateProps } from "templates/Skills";
 import { Technology } from "types";
@@ -9,7 +9,7 @@ const SkillsPage: NextPage<SkillTemplateProps> = (props) => {
   return <Skills {...props} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const {
     data: { technologies: skills },
   } = await apolloClient.query<{ technologies: Technology[] }>({
@@ -24,6 +24,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       technologies,
       tools,
     },
+    revalidate: 60, // 1 minute
   };
 };
 

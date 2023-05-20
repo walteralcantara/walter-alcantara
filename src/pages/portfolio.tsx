@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { QUERY_PORTFOLIO } from "graphql/queries/portfolio";
 import apolloClient from "lib/apollo";
 
@@ -8,7 +8,7 @@ const PortfolioPage: NextPage<PortfolioTemplateProps> = (props) => {
   return <Portfolio {...props} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const {
     data: { portfolios },
   } = await apolloClient.query({
@@ -19,6 +19,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       portfolios,
     },
+    revalidate: 60, // 1 minute
   };
 };
 

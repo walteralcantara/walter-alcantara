@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const QUERY_QUALIFICATIONS = gql`
   query QueryQualification {
-    qualifications {
+    qualifications(orderBy: startdate_DESC) {
       id
       title
       subtitle

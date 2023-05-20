@@ -1,7 +1,7 @@
 import apolloClient from "lib/apollo";
 import { QUERY_AUTHOR } from "graphql/queries/author";
 
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import Home, { HomeTemplateProps } from "templates/Home";
 
@@ -9,7 +9,7 @@ const Index: NextPage<HomeTemplateProps> = (props) => {
   return <Home {...props} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const {
     data: { author },
   } = await apolloClient.query<HomeTemplateProps>({
@@ -20,6 +20,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       author,
     },
+    revalidate: 60, // 1 minute
   };
 };
 
