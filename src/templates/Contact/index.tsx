@@ -12,7 +12,6 @@ import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import emailjs from "@emailjs/browser";
 
 import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
@@ -24,6 +23,7 @@ import { Heading } from "components/Layout/components/Heading";
 
 import InputCloseBase from "components/Form/Input";
 import TextareaCloseBase from "components/Form/Textarea";
+import DiscordService from "services/DiscordService";
 
 type FormValues = {
   email: string;
@@ -36,6 +36,7 @@ const contactFormSchema = yup.object({
   email: yup.string().required("E-mail is required").email("E-mail is invalid"),
   message: yup.string().required("Message is required"),
 });
+
 const Contact = () => {
   const form = useRef(null!);
   const toast = useToast();
@@ -49,31 +50,24 @@ const Contact = () => {
     resolver: yupResolver(contactFormSchema),
   });
 
-  const onSubmit: SubmitHandler<FormValues> = () => {
-    emailjs
-      .sendForm(
-        "service_5loz08t",
-        "template_6ur8p2v",
-        form.current,
-        "user_FA7mVfVemsrU5YZaCsAxG"
-      )
-      .then(
-        () => {
-          toast({
-            title: "Successfully sent! 🎉",
-            status: "success",
-            position: "top-right",
-          });
-        },
-        () => {
-          toast({
-            title: "An error occurred ❌ ",
-            status: "error",
-            position: "top-right",
-          });
-        }
-      )
-      .finally(() => reset());
+  const onSubmit: SubmitHandler<FormValues> = async (value) => {
+    try {
+      await DiscordService.sendMessage(value);
+      toast({
+        title: "Successfully sent! 🎉",
+        status: "success",
+        position: "top-right",
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "An error occurred ❌ ",
+        status: "error",
+        position: "top-right",
+      });
+    } finally {
+      reset();
+    }
   };
   return (
     <PageContainer>
