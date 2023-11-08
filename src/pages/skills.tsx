@@ -1,3 +1,4 @@
+import { LOCALES } from "../constants";
 import { QUERY_SKILLS } from "graphql/queries/technology";
 import apolloClient from "lib/apollo";
 import type { GetStaticProps, NextPage } from "next";
@@ -9,11 +10,12 @@ const SkillsPage: NextPage<SkillTemplateProps> = (props) => {
   return <Skills {...props} />;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const {
     data: { technologies: skills },
   } = await apolloClient.query<{ technologies: Technology[] }>({
     query: QUERY_SKILLS,
+    variables: { locale: [LOCALES[locale! as keyof typeof LOCALES]] },
   });
 
   const technologies = skills.filter((s) => s.type === "tech");

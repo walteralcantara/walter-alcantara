@@ -6,16 +6,18 @@ import { Qualification } from "../types";
 import Qualifications, {
   QualificationsTemplateProps,
 } from "templates/Qualifications";
+import { LOCALES } from "../constants";
 
 const QualificationsPage: NextPage<QualificationsTemplateProps> = (props) => {
   return <Qualifications {...props} />;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const {
     data: { qualifications },
   } = await apolloClient.query<{ qualifications: Qualification[] }>({
     query: QUERY_QUALIFICATIONS,
+    variables: { locale: [LOCALES[locale! as keyof typeof LOCALES]] },
   });
 
   const formatedQualifications = qualifications.map(

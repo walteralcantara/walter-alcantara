@@ -1,5 +1,6 @@
 import { Box, Flex, Link, Text, VStack } from "@chakra-ui/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import { SlidePage } from "components/Layout/components/SlidePage";
 import { PageContainer } from "components/Layout/components/PageContainer";
@@ -11,12 +12,20 @@ import { Heading } from "components/Layout/components/Heading";
 import { Author } from "types";
 
 import * as S from "./styled";
+import { useTranslation } from "react-i18next";
 
 export type HomeTemplateProps = {
   author: Author;
 };
 
 const Home = ({ author }: HomeTemplateProps) => {
+  const { t } = useTranslation('home');
+
+  if (!author) {
+    return null;
+  }
+
+
   return (
     <PageContainer>
       <SlidePage direction="left" href="/blog">
@@ -31,16 +40,16 @@ const Home = ({ author }: HomeTemplateProps) => {
           mb="60"
         >
           <VStack align="left" lineHeight="40px" mt={{ base: "10", sm: "0" }}>
-            <Text as="h1">Hi,</Text>
-            <Text as="h1">I&apos;m {author.name}</Text>
+            <Text as="h1">{t('hello-1')}</Text>
+            <Text as="h1">{t('hello-2')} {author?.name}</Text>
 
-            <Text as="h3">{author.title}.</Text>
+            <Text as="h3">{author?.title}.</Text>
           </VStack>
 
           <Box w={[300, 400, 500]} h="auto" pos="relative">
             <Image
-              src={author.pictures[1].image.url || "/assets/img/me-1.png"}
-              alt={author.pictures[1].alternative || ""}
+              src={author?.pictures[1]?.image?.url || "/assets/img/me-1.png"}
+              alt={author?.pictures[1]?.alternative || ""}
               width={500}
               height={500}
             />
@@ -48,7 +57,7 @@ const Home = ({ author }: HomeTemplateProps) => {
           </Box>
         </Flex>
 
-        <Heading title="About me." subtitle="An introduction about who I am." />
+        <Heading title={t('title')} subtitle={t('subtitle')} />
 
         <Flex
           align="center"
@@ -58,8 +67,8 @@ const Home = ({ author }: HomeTemplateProps) => {
           <VStack>
             <Box w={[300, 400, 500]} h="auto">
               <Image
-                src={author.pictures[2].image.url || "/assets/img/me-2.png"}
-                alt={author.pictures[2].alternative || ""}
+                src={author?.pictures[2]?.image?.url || "/assets/img/me-2.png"}
+                alt={author?.pictures[2]?.alternative || ""}
                 width={500}
                 height={500}
               />

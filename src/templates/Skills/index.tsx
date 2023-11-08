@@ -9,6 +9,7 @@ import { Modal } from "components/Layout/components/Modal";
 import { Heading } from "components/Layout/components/Heading";
 
 import { Technology } from "types";
+import { useTranslation } from "react-i18next";
 
 export type SkillTemplateProps = {
   technologies: Technology[];
@@ -18,6 +19,8 @@ export type SkillTemplateProps = {
 const Skills = ({ technologies, tools }: SkillTemplateProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [skill, setSkill] = useState<Technology | null>();
+
+  const { t } = useTranslation("skills");
 
   function handleOpenSkill(skill: Technology) {
     setIsModalVisible(true);
@@ -37,14 +40,13 @@ const Skills = ({ technologies, tools }: SkillTemplateProps) => {
 
       <PageContent>
         <Heading
-          title="Techs &amp; Tools."
-          subtitle="Some technologies that I am studying, and tools that support me
-          during development."
+          title={t("title")}
+          subtitle={t("subtitle")}
         />
 
         <Flex justify="space-between" flexDir={{ base: "column", md: "row" }}>
           <VStack align="flex-start">
-            <Text as="h3">Technologies</Text>
+            <Text as="h3">{t("technologies")}</Text>
             <Flex
               gap="2"
               flexWrap="wrap"
@@ -71,7 +73,7 @@ const Skills = ({ technologies, tools }: SkillTemplateProps) => {
           </VStack>
 
           <VStack align="flex-start">
-            <Text as="h3">Tools</Text>
+            <Text as="h3">{t("tools")}</Text>
             <Flex
               gap="2"
               flexWrap="wrap"

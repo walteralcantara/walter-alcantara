@@ -106,6 +106,7 @@ const Contact = () => {
               placeholder="Type your e-mail..."
               {...register("email")}
               error={errors.email}
+              type="email"
             />
 
             <TextareaCloseBase

@@ -1,5 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import { ChakraProvider } from "@chakra-ui/react";
+import { appWithTranslation } from "next-i18next";
 
 import type { AppProps } from "next/app";
 
@@ -31,4 +32,4 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
