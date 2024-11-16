@@ -1,28 +1,40 @@
-import { Box, IconButton, PopoverContent } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export const Container = styled(Box)`
-  margin-left: 8px;
-  /* width: 40px;
-  height: 40px; */
+type ContainerProps = {
+  colorMode: "light" | "dark";
+};
+
+export const Container = styled(Box)<ContainerProps>`
   border: 1px solid #ddd;
-  border-radius: 0.375rem; 
+  border-radius: 0.375rem;
 
-  .chakra-popover__body {
-    padding: 0;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+
+  #popover {
+    border-bottom: 1px solid #ddd;
   }
 
-  .chakra-button {
-    border-radius: 0;
-    & + .chakra-button {
-      border-top: 1px solid #ddd;
+  ${({ theme, colorMode }) => css`
+    .chakra-button {
+      padding: 0.25rem;
+      background-color: ${colorMode === "light"
+        ? theme.colors.light
+        : theme.colors.dark};
+
+      &:hover {
+        transition: filter 0.3s;
+        filter: brightness(0.7);
+      }
     }
+  `}
+
+  @media screen and (max-width: 768px) {
+    bottom: 4rem;
   }
 `;
 
-export const Content = styled.div``;
-
-export const Popover = styled.div`
-  position: absolute;
-`;
-
+export const Content = styled(Box)``;

@@ -9,11 +9,11 @@ import {
 import { ExternalLinkIcon, TriangleUpIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
-import { Portfolio } from "types";
+import { TPortfolio } from "types";
 
 import * as S from "./styled";
 
-type PortfolioItemProps = Portfolio;
+type PortfolioItemProps = TPortfolio;
 
 export const PortfolioItem = ({
   name,

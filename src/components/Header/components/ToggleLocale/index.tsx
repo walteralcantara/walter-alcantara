@@ -1,38 +1,39 @@
-import { useEffect, useState } from "react";
-
-import {
-  Button,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Button, Portal, Box, useColorMode } from "@chakra-ui/react";
+import Image from "next/image";
 
 import { useRouter } from "next/router";
-
-import * as S from "./styled";
 import { useLocalStorage } from "hooks/useLocalStorage";
 
+import * as S from "./styled";
+
 const locales = {
-  ["en"]: "🇺🇸",
-  ["br"]: "🇧🇷",
+  ["en"]: (
+    <Image
+      alt="USA Flag"
+      src="/assets/icons/flags/usa-flag.png"
+      width={48}
+      height={48}
+    />
+  ),
+  ["br"]: (
+    <Image
+      alt="Brazil Flag"
+      src="/assets/icons/flags/brazil-flag.png"
+      width={48}
+      height={48}
+    />
+  ),
 };
 
 type Locales = keyof typeof locales;
 
 function ToggleLocale() {
   const [locale, setLocale] = useState<Locales>("en");
-  const [showPopover, setShowPopover] = useState(false);
-
-  const [currentLocale, setCurrentLocale] = useLocalStorage<Locales>('locale');
-  const { isOpen, onClose, onOpen } = useDisclosure();
+  const [currentLocale, setCurrentLocale] = useLocalStorage<Locales>("locale");
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  // 🇧🇷
-  // 🇺🇸
-
-  // implements custom hook using localstorage
+  const { colorMode } = useColorMode();
 
   useEffect(() => {
     if (currentLocale) {
@@ -40,35 +41,48 @@ function ToggleLocale() {
     }
   }, [currentLocale]);
 
+  const handleClickLocale = useCallback(
+    (locale: Locales) => {
+      // setShowPopover(!showPopover);
+      setIsOpen(false);
+      setLocale(locale);
+      setCurrentLocale(locale);
+      router.push(
+        `/${locale}/${router.pathname}`,
+        `/${locale}/${router.pathname}`,
+        { locale }
+      );
+      // onClose();
+    },
+    [router, setCurrentLocale]
+  );
 
-  function handleClickLocale(locale: Locales) {
-    setShowPopover(!showPopover);
-    setLocale(locale);
-    setCurrentLocale(locale);
-    router.push(`/${locale}/${router.pathname}`, `/${locale}/${router.pathname}`, { locale });
-    onClose();
-  }
+  const renderLocales = useMemo(() => {
+    const otherlocales: string[] = Object.keys(locales).filter((key) => {
+      return key !== locale;
+    });
+
+    return otherlocales.map((key) => (
+      <Button key={key} onClick={() => handleClickLocale(key as Locales)}>
+        {locales[key as Locales]}
+      </Button>
+    ));
+  }, [handleClickLocale, locale]);
+
+  const handleOpenPopover = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <S.Container ml="2">
-      <Popover isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
-        <PopoverTrigger>
-          <Button>{locales[locale]}</Button>
-        </PopoverTrigger>
-        <PopoverContent>
-          <PopoverArrow />
-          <PopoverBody display="flex" flexDirection="column">
-            <Button onClick={() => handleClickLocale("en")}>
-              🇺🇸 English
-            </Button>
-            <Button onClick={() => handleClickLocale("br")}>
-              🇧🇷 Português
-            </Button>
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
-    </S.Container>
+    <Portal>
+      <S.Container ml="2" colorMode={colorMode}>
+        <S.Content>
+          {isOpen && <Box id="popover">{renderLocales}</Box>}
+          <Button onClick={handleOpenPopover}>{locales[locale]}</Button>
+        </S.Content>
+      </S.Container>
+    </Portal>
   );
 }
 
-export { ToggleLocale }
+export { ToggleLocale };

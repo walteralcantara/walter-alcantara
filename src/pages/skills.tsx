@@ -4,7 +4,9 @@ import apolloClient from "lib/apollo";
 import type { GetStaticProps, NextPage } from "next";
 
 import Skills, { SkillTemplateProps } from "templates/Skills";
-import { Technology } from "types";
+import serverSideTranslations from "utils/server-side-translation";
+
+import { TTechnology } from "types";
 
 const SkillsPage: NextPage<SkillTemplateProps> = (props) => {
   return <Skills {...props} />;
@@ -13,10 +15,15 @@ const SkillsPage: NextPage<SkillTemplateProps> = (props) => {
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const {
     data: { technologies: skills },
-  } = await apolloClient.query<{ technologies: Technology[] }>({
+  } = await apolloClient.query<{ technologies: TTechnology[] }>({
     query: QUERY_SKILLS,
     variables: { locale: [LOCALES[locale! as keyof typeof LOCALES]] },
   });
+
+  const serverSideTranslation = await serverSideTranslations(locale!, [
+    "skills",
+    "header",
+  ]);
 
   const technologies = skills.filter((s) => s.type === "tech");
   const tools = skills.filter((s) => s.type === "tool");
@@ -25,6 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: {
       technologies,
       tools,
+      ...serverSideTranslation,
     },
     revalidate: 60, // 1 minute
   };

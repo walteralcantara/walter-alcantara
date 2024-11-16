@@ -5,23 +5,27 @@ import { Heading } from "components/Layout/components/Heading";
 import { PortfolioItem } from "components/Layout/components/Portfolio/components/PortfolioItem";
 import { PortfolioContainer } from "components/Layout/components/Portfolio/components/PortfolioContainer";
 
-import { Portfolio } from "types";
+import { useTranslation } from "react-i18next";
+
+import { TPortfolio } from "types";
 
 export type PortfolioTemplateProps = {
-  portfolios: Portfolio[];
+  portfolios: TPortfolio[];
 };
 
 const Portfolio = ({ portfolios }: PortfolioTemplateProps) => {
+  const { t } = useTranslation(["portfolio", "header"]);
+
   return (
     <PageContainer>
       <SlidePage direction="left" href="/qualifications">
-        Qualifications
+        {t("header:qualifications")}
       </SlidePage>
 
       <PageContent>
         <Heading
-          title="Portfolio."
-          subtitle="Some projects that I am developing now or it's already done."
+          title={t("portfolio:title")}
+          subtitle={t("portfolio:subtitle") as string}
         />
 
         <PortfolioContainer>
@@ -32,7 +36,7 @@ const Portfolio = ({ portfolios }: PortfolioTemplateProps) => {
       </PageContent>
 
       <SlidePage direction="right" href="/contact">
-        Contact
+        {t("header:contact")}
       </SlidePage>
     </PageContainer>
   );

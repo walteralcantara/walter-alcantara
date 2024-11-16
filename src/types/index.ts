@@ -1,4 +1,4 @@
-export type Portfolio = {
+export type TPortfolio = {
   name: string;
   description: string;
   link: string;
@@ -11,7 +11,7 @@ export type Portfolio = {
   };
 };
 
-export type Qualification = {
+export type TQualification = {
   id: string;
   direction: "left" | "right";
   type: "education" | "experience";
@@ -26,7 +26,7 @@ export type Qualification = {
   }>;
 };
 
-export type Technology = {
+export type TTechnology = {
   id: string;
   title: string;
   description: string;
@@ -39,7 +39,7 @@ export type Technology = {
   };
 };
 
-export type Author = {
+export type TAuthor = {
   name: string;
   title: string;
   resume: string;
@@ -54,7 +54,7 @@ export type Author = {
   }>;
 };
 
-export type Post = {
+export type TPost = {
   title: string;
   excerpt: string;
   createdAt: string;

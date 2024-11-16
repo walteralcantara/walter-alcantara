@@ -1,11 +1,17 @@
 import { format } from "date-fns";
+import { enUS, ptBR } from "date-fns/locale";
 import { QUERY_QUALIFICATIONS } from "graphql/queries/qualification";
 import apolloClient from "lib/apollo";
 import type { GetStaticProps, NextPage } from "next";
-import { Qualification } from "../types";
+
+import { TQualification } from "../types";
+
+import serverSideTranslations from "utils/server-side-translation";
+
 import Qualifications, {
   QualificationsTemplateProps,
 } from "templates/Qualifications";
+
 import { LOCALES } from "../constants";
 
 const QualificationsPage: NextPage<QualificationsTemplateProps> = (props) => {
@@ -15,16 +21,29 @@ const QualificationsPage: NextPage<QualificationsTemplateProps> = (props) => {
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const {
     data: { qualifications },
-  } = await apolloClient.query<{ qualifications: Qualification[] }>({
+  } = await apolloClient.query<{ qualifications: TQualification[] }>({
     query: QUERY_QUALIFICATIONS,
     variables: { locale: [LOCALES[locale! as keyof typeof LOCALES]] },
   });
 
+  const localeMap: {
+    [key: string]: Locale;
+  } = {
+    en: enUS,
+    br: ptBR,
+  };
+
   const formatedQualifications = qualifications.map(
     ({ startdate, enddate, ...q }) => ({
       ...q,
-      startdate: format(new Date(startdate), "MMM yyyy"),
-      enddate: enddate ? format(new Date(enddate), "MMM yyyy") : "Present",
+      startdate: format(new Date(startdate), "MMM yyyy", {
+        locale: localeMap[locale!],
+      }),
+      enddate: enddate
+        ? format(new Date(enddate), "MMM yyyy", { locale: localeMap[locale!] })
+        : locale === "en"
+					? "Present"
+					: "Até o momento",
     })
   );
 
@@ -35,10 +54,16 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     (q) => q.type === "experience"
   );
 
+  const serverSideTranslation = await serverSideTranslations(locale!, [
+    "qualifications",
+    "header",
+  ]);
+
   return {
     props: {
       education,
       experience,
+      ...serverSideTranslation,
     },
     revalidate: 60, // 1 minute
   };

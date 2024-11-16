@@ -8,21 +8,21 @@ import { PageContent } from "components/Layout/components/PageContent";
 import { Modal } from "components/Layout/components/Modal";
 import { Heading } from "components/Layout/components/Heading";
 
-import { Technology } from "types";
+import { TTechnology } from "types";
 import { useTranslation } from "react-i18next";
 
 export type SkillTemplateProps = {
-  technologies: Technology[];
-  tools: Technology[];
+  technologies: TTechnology[];
+  tools: TTechnology[];
 };
 
 const Skills = ({ technologies, tools }: SkillTemplateProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [skill, setSkill] = useState<Technology | null>();
+  const [skill, setSkill] = useState<TTechnology | null>();
 
-  const { t } = useTranslation("skills");
+  const { t } = useTranslation(["skills", "header"]);
 
-  function handleOpenSkill(skill: Technology) {
+  function handleOpenSkill(skill: TTechnology) {
     setIsModalVisible(true);
     setSkill(skill);
   }
@@ -35,14 +35,11 @@ const Skills = ({ technologies, tools }: SkillTemplateProps) => {
   return (
     <PageContainer>
       <SlidePage direction="left" href="/">
-        Home
+        {t("header:home")}
       </SlidePage>
 
       <PageContent>
-        <Heading
-          title={t("title")}
-          subtitle={t("subtitle")}
-        />
+        <Heading title={t("title")} subtitle={t("subtitle") as string} />
 
         <Flex justify="space-between" flexDir={{ base: "column", md: "row" }}>
           <VStack align="flex-start">
@@ -61,12 +58,14 @@ const Skills = ({ technologies, tools }: SkillTemplateProps) => {
                   h="80px"
                   onClick={() => handleOpenSkill({ picture, ...tech })}
                 >
-                  <Image
-                    width={50}
-                    height={50}
-                    src={picture.image.url}
-                    alt={picture.alternative}
-                  />
+                  {picture && (
+                    <Image
+                      width={50}
+                      height={50}
+                      src={picture.image.url}
+                      alt={picture.alternative}
+                    />
+                  )}
                 </Button>
               ))}
             </Flex>
@@ -123,7 +122,7 @@ const Skills = ({ technologies, tools }: SkillTemplateProps) => {
       </PageContent>
 
       <SlidePage direction="right" href="/qualifications">
-        Qualifications
+        {t("header:qualifications")}
       </SlidePage>
     </PageContainer>
   );
