@@ -10,6 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon, CalendarIcon } from "@chakra-ui/icons";
+import { useTranslation } from "react-i18next";
 
 import EducationIcon from "assets/icons/education-icon.svg";
 import JobIcon from "assets/icons/job-icon.svg";
@@ -20,36 +21,40 @@ import { SlidePage } from "components/Layout/components/SlidePage";
 import { Timeline } from "components/Layout/components/Timeline";
 import { Heading } from "components/Layout/components/Heading";
 
-import { Qualification } from "types";
+import { TQualification } from "types";
 
 export type QualificationsTemplateProps = {
-  experience: Qualification[];
-  education: Qualification[];
+  experience: TQualification[];
+  education: TQualification[];
 };
 
 const Qualifications = ({
   education,
   experience,
 }: QualificationsTemplateProps) => {
+  const { t } = useTranslation(["qualifications", "header"]);
   return (
     <PageContainer>
       <SlidePage direction="left" href="/skills">
-        Skills
+        {t("header:skills")}
       </SlidePage>
 
       <PageContent>
-        <Heading title="Qualifications" subtitle="My journey until here." />
+        <Heading
+          title={t("qualifications:title")}
+          subtitle={t("qualifications:subtitle") as string}
+        />
 
         <Tabs variant="soft-rounded">
           <Flex justify="center">
             <TabList gap={{ base: "2", sm: "10" }}>
               <Tab>
                 <EducationIcon width={30} />
-                <Text ml="2">Education</Text>
+                <Text ml="2">{t("qualifications:education")}</Text>
               </Tab>
               <Tab>
                 <JobIcon width={30} />
-                <Text ml="2">Experience</Text>
+                <Text ml="2">{t("qualifications:experience")}</Text>
               </Tab>
             </TabList>
           </Flex>
@@ -96,7 +101,7 @@ const Qualifications = ({
       </PageContent>
 
       <SlidePage direction="right" href="/portfolio">
-        Portfolio
+        {t("header:portfolio")}
       </SlidePage>
     </PageContainer>
   );

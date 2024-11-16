@@ -1,0 +1,11 @@
+{
+	"title": "Contact.",
+	"subtitle": "You can reach me through the following links or you could send me a message.",
+	"form.name": "Your name",
+	"form.name.placeholder": "Type your name",
+	"form.email": "Your e-mail address",
+	"form.email.placeholder": "Type your e-mail",
+	"form.message": "Your message",
+	"form.message.placeholder": "Type your message",
+	"form.submit": "Send"
+}

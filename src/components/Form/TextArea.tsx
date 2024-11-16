@@ -26,5 +26,5 @@ const TextareaBase: ForwardRefRenderFunction<
   );
 };
 
-const TextareaCloseBase = forwardRef(TextareaBase);
-export default TextareaCloseBase;
+const MyTextArea = forwardRef(TextareaBase);
+export default MyTextArea;

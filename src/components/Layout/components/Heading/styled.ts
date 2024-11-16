@@ -10,15 +10,17 @@ export const HeadingWrapper = styled(Box)`
     position: relative;
     display: flex;
     align-items: center;
-    
+    line-height: 2.5rem;
+    margin-bottom: 1rem;
+
     :before {
       content: "";
       display: block;
-      background: #682AE9;
+      background: #682ae9;
       height: 2.7rem;
       min-width: 8px;
       display: block;
-      margin-right: .8rem;
+      margin-right: 0.8rem;
     }
 
     @media screen and (max-width: 425px) {

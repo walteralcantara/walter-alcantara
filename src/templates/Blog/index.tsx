@@ -1,21 +1,25 @@
+import { useTranslation } from "react-i18next";
+
 import { SlidePage } from "components/Layout/components/SlidePage";
 import { PageContainer } from "components/Layout/components/PageContainer";
 import { Heading } from "components/Layout/components/Heading";
 import { PageContent } from "components/Layout/components/PageContent";
 import { PostPage } from "components/Layout/components/Post";
-import { Post } from "types";
+import { TPost } from "types";
 
 import * as S from "./styled";
 
 export type BlogTemplateProps = {
-  posts: Post[];
+  posts: TPost[];
 };
 
 const Blog = ({ posts }: BlogTemplateProps) => {
+  const { t } = useTranslation(["blog", "header"]);
+
   return (
     <PageContainer>
       <SlidePage direction="left" href="/contact">
-        Contact
+        {t("header:contact")}
       </SlidePage>
 
       <PageContent>
@@ -29,7 +33,7 @@ const Blog = ({ posts }: BlogTemplateProps) => {
       </PageContent>
 
       <SlidePage direction="right" href="/">
-        Home
+        {t("header:home")}
       </SlidePage>
     </PageContainer>
   );

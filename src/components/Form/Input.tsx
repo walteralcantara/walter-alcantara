@@ -38,5 +38,5 @@ const InputBase: ForwardRefRenderFunction<
   );
 };
 
-export const InputCloseBase = forwardRef(InputBase);
-export default InputCloseBase;
+export const MyInput = forwardRef(InputBase);
+export default MyInput;

@@ -12,6 +12,7 @@ import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useTranslation } from "react-i18next";
 
 import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
@@ -21,8 +22,8 @@ import { PageContainer } from "components/Layout/components/PageContainer";
 import { PageContent } from "components/Layout/components/PageContent";
 import { Heading } from "components/Layout/components/Heading";
 
-import InputCloseBase from "components/Form/Input";
-import TextareaCloseBase from "components/Form/Textarea";
+import MyInput from "components/Form/Input";
+import MyTextArea from "components/Form/TextArea";
 import DiscordService from "services/DiscordService";
 
 type FormValues = {
@@ -38,6 +39,7 @@ const contactFormSchema = yup.object({
 });
 
 const Contact = () => {
+  const { t } = useTranslation<any>(["contact", "header"]);
   const form = useRef(null!);
   const toast = useToast();
 
@@ -72,14 +74,11 @@ const Contact = () => {
   return (
     <PageContainer>
       <SlidePage direction="left" href="/portfolio">
-        Portfolio
+        {t("portfolio", { ns: "header" })}
       </SlidePage>
 
       <PageContent>
-        <Heading
-          title="Contact"
-          subtitle="You can reach me through the following links or you could send me a message."
-        />
+        <Heading title={t("title")} subtitle={t("subtitle") as string} />
 
         <Flex
           justify="space-between"
@@ -94,30 +93,30 @@ const Contact = () => {
             onSubmit={handleSubmit(onSubmit)}
             ref={form}
           >
-            <InputCloseBase
-              label="Your name"
-              placeholder="Type your name..."
+            <MyInput
+              label={`${t("form.name")}`}
+              placeholder={`${t("form.name.placeholder")}...`}
               {...register("name")}
               error={errors.name}
             />
 
-            <InputCloseBase
-              label="Your e-mail address"
-              placeholder="Type your e-mail..."
+            <MyInput
+              label={`${t("form.email")}`}
+              placeholder={`${t("form.email.placeholder")}...`}
               {...register("email")}
               error={errors.email}
               type="email"
             />
 
-            <TextareaCloseBase
-              label="Message"
-              placeholder="Type your message..."
+            <MyTextArea
+              label={`${t("form.message")}`}
+              placeholder={`${t("form.message.placeholder")}...`}
               {...register("message")}
               error={errors.message}
             />
 
             <Button type="submit" w="100%" size="lg" variant="highlighted">
-              Send
+              {t("form.submit")}
             </Button>
           </VStack>
 

@@ -3,6 +3,8 @@ import { QUERY_PORTFOLIO } from "graphql/queries/portfolio";
 import apolloClient from "lib/apollo";
 
 import Portfolio, { PortfolioTemplateProps } from "templates/Portfolio";
+import serverSideTranslations from "utils/server-side-translation";
+
 import { LOCALES } from "../constants";
 
 const PortfolioPage: NextPage<PortfolioTemplateProps> = (props) => {
@@ -17,9 +19,15 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     variables: { locale: [LOCALES[locale! as keyof typeof LOCALES]] },
   });
 
+  const serverSideTranslation = await serverSideTranslations(locale!, [
+    "portfolio",
+    "header",
+  ]);
+
   return {
     props: {
       portfolios,
+      ...serverSideTranslation,
     },
     revalidate: 60, // 1 minute
   };

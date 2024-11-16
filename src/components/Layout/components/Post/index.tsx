@@ -1,11 +1,11 @@
 import { Avatar, Text, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
 
-import { Post } from "types";
+import { TPost } from "types";
 
 import * as S from "./styled";
 
-export type PostProps = Post;
+export type PostProps = TPost;
 
 export const PostPage = ({
   title,
@@ -14,7 +14,7 @@ export const PostPage = ({
   coverImage,
   author,
   createdAt,
-}: Post) => {
+}: TPost) => {
   const { colorMode } = useColorMode();
 
   return (

@@ -1,6 +1,6 @@
 import { Box, Flex, Link, Text, VStack } from "@chakra-ui/react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 import { SlidePage } from "components/Layout/components/SlidePage";
 import { PageContainer } from "components/Layout/components/PageContainer";
@@ -9,22 +9,20 @@ import { Button } from "components/Layout/components/Button";
 import { ScrollDown } from "components/Layout/components/ScrollDown";
 import { Heading } from "components/Layout/components/Heading";
 
-import { Author } from "types";
+import { TAuthor } from "types";
 
 import * as S from "./styled";
-import { useTranslation } from "react-i18next";
 
 export type HomeTemplateProps = {
-  author: Author;
+  author: TAuthor;
 };
 
 const Home = ({ author }: HomeTemplateProps) => {
-  const { t } = useTranslation('home');
+  const { t } = useTranslation(["home", "header"]);
 
   if (!author) {
     return null;
   }
-
 
   return (
     <PageContainer>
@@ -39,9 +37,16 @@ const Home = ({ author }: HomeTemplateProps) => {
           flexDirection={{ base: "column-reverse", md: "row" }}
           mb="60"
         >
-          <VStack align="left" lineHeight="40px" mt={{ base: "10", sm: "0" }}>
-            <Text as="h1">{t('hello-1')}</Text>
-            <Text as="h1">{t('hello-2')} {author?.name}</Text>
+          <VStack
+            align="left"
+            lineHeight="40px"
+            mt={{ base: "10", sm: "0" }}
+            maxWidth={400}
+          >
+            <Text as="h1">{t("hello-1")}</Text>
+            <Text as="h1">
+              {t("hello-2")} {author?.name}
+            </Text>
 
             <Text as="h3">{author?.title}.</Text>
           </VStack>
@@ -57,7 +62,7 @@ const Home = ({ author }: HomeTemplateProps) => {
           </Box>
         </Flex>
 
-        <Heading title={t('title')} subtitle={t('subtitle')} />
+        <Heading title={t("title")} subtitle={t("subtitle") as string} />
 
         <Flex
           align="center"
@@ -91,7 +96,7 @@ const Home = ({ author }: HomeTemplateProps) => {
       </PageContent>
 
       <SlidePage direction="right" href="/skills">
-        Skills
+        {t("header:skills")}
       </SlidePage>
     </PageContainer>
   );

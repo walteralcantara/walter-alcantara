@@ -4,6 +4,8 @@ import { GetServerSideProps } from "next";
 import { QUERY_POSTS } from "graphql/queries/posts";
 
 import Blog, { BlogTemplateProps } from "templates/Blog";
+import serverSideTranslations from "utils/server-side-translation";
+
 import { format } from "date-fns";
 
 type BlogPageProps = BlogTemplateProps;
@@ -12,7 +14,7 @@ export default function BlogPage(props: BlogPageProps) {
   return <Blog {...props} />;
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   const {
     data: { posts },
   } = await apolloClient.query<BlogPageProps>({
@@ -26,9 +28,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
     };
   });
 
+  const serverSideTranslation = await serverSideTranslations(locale!, [
+    "blog",
+    "header",
+  ]);
+
   return {
     props: {
       posts: [...formatedPosts],
+      ...serverSideTranslation,
     },
   };
 };
