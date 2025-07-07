@@ -89,7 +89,7 @@ const Home = ({ author }: HomeTemplateProps) => {
               dangerouslySetInnerHTML={{ __html: author.about.html }}
             />
             <Link href={author.resume} target="_blank">
-              <Button>Resume</Button>
+              <Button>{t("resume")}</Button>
             </Link>
           </VStack>
         </Flex>

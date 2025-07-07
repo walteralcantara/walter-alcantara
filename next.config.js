@@ -7,7 +7,7 @@ const nextConfig = {
   },
   swcMinify: true,
   images: {
-    domains: ['media.graphassets.com'],
+    domains: ['media.graphassets.com', 'sa-east-1.graphassets.com'],
   },
   webpack(config) {
     config.module.rules.push({

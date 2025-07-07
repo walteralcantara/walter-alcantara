@@ -75,7 +75,7 @@ function ToggleLocale() {
 
   return (
     <Portal>
-      <S.Container ml="2" colorMode={colorMode}>
+      <S.Container ml="2" colormode={colorMode}>
         <S.Content>
           {isOpen && <Box id="popover">{renderLocales}</Box>}
           <Button onClick={handleOpenPopover}>{locales[locale]}</Button>
