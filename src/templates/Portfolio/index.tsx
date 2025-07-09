@@ -8,6 +8,7 @@ import { PortfolioContainer } from "components/Layout/components/Portfolio/compo
 import { useTranslation } from "react-i18next";
 
 import { TPortfolio } from "types";
+import { Text } from "@chakra-ui/react";
 
 export type PortfolioTemplateProps = {
   portfolios: TPortfolio[];
@@ -15,6 +16,7 @@ export type PortfolioTemplateProps = {
 
 const Portfolio = ({ portfolios }: PortfolioTemplateProps) => {
   const { t } = useTranslation(["portfolio", "header"]);
+  const isPortfolioEmpty = portfolios.length === 0;
 
   return (
     <PageContainer>
@@ -29,9 +31,24 @@ const Portfolio = ({ portfolios }: PortfolioTemplateProps) => {
         />
 
         <PortfolioContainer>
-          {portfolios.map((project) => (
-            <PortfolioItem key={project.name} {...project} />
-          ))}
+          {!isPortfolioEmpty &&
+            portfolios.map((project) => (
+              <PortfolioItem key={project.name} {...project} />
+            ))}
+
+          {isPortfolioEmpty && (
+            <Text
+              as="h1"
+              style={{
+                textAlign: "center",
+                margin: "4rem auto 0px auto",
+                fontSize: "2.5rem",
+                opacity: 0.8,
+              }}
+            >
+              {t("portfolio:title-wip")}
+            </Text>
+          )}
         </PortfolioContainer>
       </PageContent>
 
